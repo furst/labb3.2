@@ -73,12 +73,12 @@ class RegisterView {
 
 	public function registerFailed($message) {
 
-		if (strlen($this->getUserName()) < 3) {
+		if(\Common\Filter::hasTags($this->getUserName())) {
+			$this->message .= "<p>Användarnamnet innehåller ogiltiga tecken</p>";
+		} else if (strlen($this->getUserName()) < 3) {
 			$this->message .= "<p>Användarnamnet har för få tecken. Minst 3 tecken</p>";
 		} else if(strlen($this->getUserName()) > 9) {
 			$this->message .= "<p>Användarnamnet har för många tecken. Max 9 tecken</p>";
-		} else if(\Common\Filter::hasTags($this->getUserName())) {
-			$this->message .= "<p>Användarnamnet innehåller ogiltiga tecken</p>";
 		}
 
 		if ($message == "Username is taken") {

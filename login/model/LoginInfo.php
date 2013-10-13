@@ -43,9 +43,9 @@ class LoginInfo {
 		if($this->ipAdress != $_SERVER["REMOTE_ADDR"] || 
 		   $this->userAgent != $_SERVER["HTTP_USER_AGENT"]) {
 
-			\Debug::log("wrong ip or adress, session hijacking? $ipAdress $userAgent");
+			\Debug::log("wrong ip or adress, session hijacking? $this->ipAdress $this->userAgent");
 			$time = time();
-			error_log("Session hijacking attempt at $time, $ipAdress $userAgent", 0, "log.txt");
+			error_log("Session hijacking attempt at $time, $this->ipAdress $this->userAgent", 0, "log.txt");
 			return false;
 		}
 

@@ -20,7 +20,7 @@ class TemporaryPasswordServer extends TemporaryPassword {
 	
 	
 	public function __construct() {
-		$this->expireDate = time() + 60*60*24*30; //one month from now
+		$this->expireDate = time() + 60; //one minute from now
 		$this->temporaryPassword = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 40);
 	}
 
